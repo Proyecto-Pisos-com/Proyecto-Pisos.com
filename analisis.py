@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime
 
-df = pd.read_csv("/Users/carlagamezdelalamo/Documents/GitHub/Proyecto-Pisos.com/data/venta_madrid_modelado.csv")
+df = pd.read_csv("venta_madrid_modelado.csv")
 # df = pd.read_csv("venta_madrid_limpio.csv")
 año_actual = datetime.datetime.now().year
 np.random.seed(42)
