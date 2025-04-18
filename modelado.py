@@ -27,7 +27,7 @@ df.to_csv("venta_madrid_modelado.csv", index=False)
 print("El archivo 'venta_madrid_modelado.csv' ha sido creado con éxito.")
 # El archivo 'venta_madrid_modelado.csv' ha sido creado con éxito.
 print('\nvista previa del archivo:')
-print(df.head(10))
+print(df.head(10))ls data/venta_madrid.db
 print('\nestadísticas del archivo:')
 print(df[["precio", "habitaciones", "metros"]].describe())
 # Conexión a la base de datos SQLite
