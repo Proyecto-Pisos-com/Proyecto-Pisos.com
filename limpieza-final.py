@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
-df1 = pd.read_json("venta_madrid_detalle_10000.json")
+df1 = pd.read_json("/Users/carlagamezdelalamo/Documents/GitHub/Proyecto-Pisos.com/venta_madrid_detalle_completo.json")
 print(df1[["precio", "ubicacion", "habitaciones", "metros"]].head(10))
 print("\nTipos de datos:")
 print(df1[["precio", "ubicacion", "habitaciones", "metros"]].dtypes)
@@ -38,6 +38,6 @@ df1 = df1[df1["Ubicacion"].str.contains("Madrid", na=False)]
 df1 = df1[df1["Habitaciones"] >= 3]
 df1 = df1[df1["Metros"] >= 90]
 df1 = df1[df1["Precio"] >= 200000]
-df1.to_csv("venta_madrid_detalle_10000_limpio.csv", index=False)
-print("\nRegistros después de la limpieza:")
+df1.to_csv("venta_madrid_limpio.csv", index=False)
+df1 = pd.read_csv("venta_madrid_limpio.csv")
 print(df1.head())
