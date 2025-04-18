@@ -1,0 +1,16 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv("/Users/carlagamezdelalamo/Documents/GitHub/Proyecto-Pisos.com/data/venta_madrid_modelado.csv")
+# df = pd.read_csv("venta_madrid_limpio.csv")
+df["superficie_construida"] = df["superficie_construida"].astype(str)
+df["superficie_construida"] = df["superficie_construida"].replace({r"[^\d]": ""}, regex=True)
+df["superficie_construida"] = pd.to_numeric(df["superficie_construida"], errors="coerce")
+df = df.dropna(subset=["superficie_construida"])
+plt.figure(figsize=(10, 6))
+scatter = plt.scatter(df["superficie_construida"], df["precio"], alpha=0.5)
+plt.title("Relación entre Superficie Construida y precio")
+plt.xlabel("Superficie Construida (m²)")
+plt.ylabel("precio (€)")
+plt.grid()
+plt.show()
+print("Gráfico de dispersión entre Superficie Construida y precio")
