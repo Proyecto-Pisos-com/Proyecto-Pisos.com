@@ -44,5 +44,6 @@ df1 = df1[df1["Habitaciones"] >= 3]
 df1 = df1[df1["Metros"] >= 90]
 df1 = df1[df1["Precio"] >= 200000]
 df1.to_csv("venta_madrid_limpio.csv", index=False)
+
 df1 = pd.read_csv("venta_madrid_limpio.csv")
 print(df1.head())
