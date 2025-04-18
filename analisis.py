@@ -51,6 +51,7 @@ plt.xlabel("Antigüedad (años)")
 plt.ylabel("Precio (€)")
 plt.grid(True)
 plt.tight_layout()
+plt.savefig("outputs/precio_vs_antiguedad.png")
 plt.show()
 print("Gráfico de dispersión entre Antigüedad y precio")
 # Gráfico de dispersión entre Antigüedad y precio
