@@ -27,19 +27,19 @@ Los resultados se almacenan en archivos `.csv` y en SQLite para futuras consulta
 
 ### 💰 Precio vs Superficie (Venta)
 
-![Superficie vs Precio](outputs/superficie_vs_precio_venta.png)
+![Superficie vs Precio](outputs/Figura_1.png)
 
 ---
 
 ### 🕰️ Precio vs Antigüedad (Venta)
 
-![Precio vs Antigüedad](outputs/precio_vs_antiguedad_venta.png)
+![Precio vs Antigüedad](outputs/Figuar_2.png)
 
 ---
 
 ### 🏢 Precio vs Superficie (Alquiler)
 
-![Superficie vs Precio Alquiler](outputs/superficie_vs_precio_alquiler.png)
+![Superficie vs Precio Alquiler](outputs/Figura_3.png)
 
 ---
 
