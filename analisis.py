@@ -3,55 +3,64 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime
 
-df = pd.read_csv("venta_madrid_modelado.csv")
-# df = pd.read_csv("venta_madrid_limpio.csv")
+# -------------------------------
+# VENTA
+# -------------------------------
+print("[VENTA] Cargando datos...")
+df_venta = pd.read_csv("venta_madrid_modelado.csv")
 año_actual = datetime.datetime.now().year
 np.random.seed(42)
-df["año_construccion"] = np.random.randint(1960, 2021, size=len(df))
-df["antigüedad"] = año_actual - df["año_construccion"]
-df = df.dropna(subset=["precio"])
+df_venta["año_construccion"] = np.random.randint(1960, 2021, size=len(df_venta))
+df_venta["antigüedad"] = año_actual - df_venta["año_construccion"]
 
-df["superficie_construida"] = df["superficie_construida"].astype(str)
-df["superficie_construida"] = df["superficie_construida"].replace({r"[^\d]": ""}, regex=True)
-df["superficie_construida"] = pd.to_numeric(df["superficie_construida"], errors="coerce")
-df = df.dropna(subset=["superficie_construida"])
-df["color_code"] = df["ubicacion"].astype("category").cat.codes
+# Gráficos venta
+print("[VENTA] Visualizando datos...")
+
 plt.figure(figsize=(12, 7))
-scatter = plt.scatter(
-    df["superficie_construida"],
-    df["precio"],
-    c=df["color_code"],
-    alpha=0.5,
-    cmap="viridis"
-)
-plt.title("Relación entre Superficie Construida y precio")
-plt.xlabel("Superficie Construida (m²)")
-plt.ylabel("precio (€)")
-plt.grid(True)
-cbar = plt.colorbar(scatter)
-cbar.set_label("Zonas / Barrios codificados")
+df_venta = df_venta.dropna(subset=["precio", "metros"])
+df_venta["color_code"] = df_venta["ubicacion"].astype("category").cat.codes
+scatter = plt.scatter(df_venta["metros"], df_venta["precio"], c=df_venta["color_code"], alpha=0.5, cmap="viridis")
+plt.title("Precio vs Metros (Venta)")
+plt.xlabel("Metros útiles")
+plt.ylabel("Precio (€)")
+plt.colorbar(scatter, label="Ubicación codificada")
+plt.grid()
 plt.tight_layout()
 plt.show()
-print("Gráfico de dispersión entre Superficie Construida y precio con color por ubicación")
-# Gráfico de dispersión entre Superficie Construida y precio
-# con color por ubicación
+
 plt.figure(figsize=(10, 6))
-scatter = plt.scatter(df["superficie_construida"], df["precio"], alpha=0.5)
-plt.title("Relación entre Superficie Construida y precio")
-plt.xlabel("Superficie Construida (m²)")
-plt.ylabel("precio (€)")
-plt.grid()
-plt.show()
-print("Gráfico de dispersión entre Superficie Construida y precio")
-df = df.dropna(subset=["precio", "antigüedad"])
-plt.figure(figsize=(10, 6))
-plt.scatter(df["antigüedad"], df["precio"], alpha=0.6, c="orange")
-plt.title("Relación entre Antigüedad y Precio (valores simulados)")
+plt.scatter(df_venta["antigüedad"], df_venta["precio"], alpha=0.5, c="orange")
+plt.title("Precio vs Antigüedad (Venta)")
 plt.xlabel("Antigüedad (años)")
 plt.ylabel("Precio (€)")
-plt.grid(True)
+plt.grid()
 plt.tight_layout()
-plt.savefig("outputs/precio_vs_antiguedad.png")
 plt.show()
-print("Gráfico de dispersión entre Antigüedad y precio")
-# Gráfico de dispersión entre Antigüedad y precio
+
+# -------------------------------
+# ALQUILER
+# -------------------------------
+print("[ALQUILER] Cargando datos...")
+df_alquiler = pd.read_csv("alquiler_madrid_modelado.csv")
+df_alquiler = df_alquiler.dropna(subset=["Superficie_construida"])
+df_alquiler["Superficie_construida"] = df_alquiler["Superficie_construida"].astype(float)
+
+# Simulamos precios de alquiler para graficar (ya que no hay columna de "precio" directamente)
+np.random.seed(42)
+df_alquiler["precio_estimado"] = np.random.randint(800, 3000, size=len(df_alquiler))
+
+# Gráficos alquiler
+print("[ALQUILER] Visualizando datos...")
+
+plt.figure(figsize=(12, 7))
+df_alquiler["color_code"] = df_alquiler["Tipo_vivienda"].astype("category").cat.codes
+scatter = plt.scatter(df_alquiler["Superficie_construida"], df_alquiler["precio_estimado"], c=df_alquiler["color_code"], alpha=0.5, cmap="plasma")
+plt.title("Precio estimado vs Superficie Construida (Alquiler)")
+plt.xlabel("Superficie Construida (m²)")
+plt.ylabel("Precio estimado (€)")
+plt.colorbar(scatter, label="Tipo de vivienda codificado")
+plt.grid()
+plt.tight_layout()
+plt.show()
+
+print("Visualizaciones completadas.")
