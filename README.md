@@ -57,13 +57,13 @@ Consultas realizadas sobre bases de datos SQLite:
 ## Visualizaciones
 
 ### Precio vs Antigüedad
-![Precio vs Antigüedad](outputs/precio_vs_antiguedad.png)
+![Precio vs Antigüedad](outputs/Figure_1.png)
 
 ### Superficie Construida vs Precio (coloreado por ubicación)
-![Superficie vs Precio Color](outputs/superficie_vs_precio_color.png)
+![Superficie vs Precio Color](outputs/Figure_2.png)
 
 ### Superficie Construida vs Precio (simple)
-![Superficie vs Precio Simple](outputs/superficie_vs_precio_simple.png)
+![Superficie vs Precio Simple](outputs/Figure_3.png)
 
 ## 🚀 Próximos pasos
 
