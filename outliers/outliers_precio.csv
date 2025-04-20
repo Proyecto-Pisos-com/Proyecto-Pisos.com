@@ -1,0 +1,127 @@
+titulo_y,ubicacion_y,precio_num,habitaciones_num,baños_num,metros_num,superficie_construida_num,superficie_util_num,link,es_outlier
+Piso en calle Luis Garcia Cereceda,La Finca (Pozuelo de Alarcón),8500.0,3.0,3.0,378.0,378.0,188.0,https://www.pisos.com/alquilar/piso-la_finca-49178402159_280500/,True
+Piso en Justicia-Chueca,Justicia-Chueca (Distrito Centro. Madrid Capital),11500.0,3.0,4.0,248.0,248.0,192.0,https://www.pisos.com/alquilar/piso-justicia_chueca28004-42520786919_109300/,True
+Chalet en Soto de La Moraleja,El Soto de la Moraleja (La Moraleja),6000.0,6.0,5.0,,,,https://www.pisos.com/alquilar/chalet-el_soto_de_la_moraleja28109-49180592695_106000/,True
+Casa pareada en calle calle del Camino Ancho,La Moraleja (La Moraleja),6500.0,5.0,5.0,342.0,,,https://www.pisos.com/alquilar/casa_pareada-la_moraleja_distrito28109-5011162220_101800/,True
+Piso en calle de Juan Bravo,Castellana (Distrito Salamanca. Madrid Capital),6500.0,4.0,5.0,241.0,241.0,235.0,https://www.pisos.com/alquilar/piso-salamanca_castellana28006-51745860472_996542/,True
+Piso en Recoletos,Recoletos (Distrito Salamanca. Madrid Capital),8000.0,3.0,3.0,283.0,283.0,157.0,https://www.pisos.com/alquilar/piso-recoletos28001-51721094916_108500/,True
+Chalet en calle Bellatrix,Aravaca (Distrito Moncloa-Aravaca. Madrid Capital),8500.0,6.0,7.0,650.0,650.0,600.0,https://www.pisos.com/alquilar/chalet-moncloa_aravaca_aravaca28023-945856909558165_109700/,True
+Piso en Madrid,Castellana (Distrito Salamanca. Madrid Capital),6000.0,4.0,4.0,264.0,264.0,,https://www.pisos.com/alquilar/piso-salamanca_castellana28006-25869676436_100500/,True
+Casa adosada en calle Bellatrix,Aravaca (Distrito Moncloa-Aravaca. Madrid Capital),8400.0,5.0,7.0,650.0,650.0,,https://www.pisos.com/alquilar/casa_adosada-moncloa_aravaca_aravaca28023-46755846428_101800/,True
+Apartamento en Trafalgar,Trafalgar (Distrito Chamberí. Madrid Capital),8000.0,3.0,4.0,204.0,204.0,,https://www.pisos.com/alquilar/apartamento-trafalgar28010-38406054757_101800/,True
+Casa en calle del Darro,El Viso (Distrito Chamartín. Madrid Capital),10000.0,5.0,4.0,250.0,250.0,,https://www.pisos.com/alquilar/casa-chamartin_el_viso28002-52532843874_101800/,True
+"Piso en calle de Alcalá, 68",Recoletos (Distrito Barrio de Salamanca. Madrid Capital),7750.0,4.0,5.0,222.0,222.0,198.0,https://www.pisos.com/alquilar/piso-recoletos28009-53427720365_100500/,True
+Ático en calle de Sagasta,Justicia-Chueca (Distrito Centro. Madrid Capital),8500.0,4.0,5.0,350.0,350.0,300.0,https://www.pisos.com/alquilar/atico-justicia_chueca28004-945856909480201_109700/,True
+Chalet unifamiliar en calle de la Madre de Dios,Nueva España (Distrito Chamartín. Madrid Capital),7500.0,6.0,6.0,552.0,552.0,480.0,https://www.pisos.com/alquilar/chalet_unifamiliar-nueva_espana28016-48347639138_992392/,True
+Dúplex en Plaza de España,Argüelles (Distrito Moncloa-Aravaca. Madrid Capital),6000.0,3.0,3.0,163.0,163.0,150.0,https://www.pisos.com/alquilar/duplex-moncloa_aravaca_arguelles28008-53389840590_100500/,True
+Piso en Paseo de la Castellana,Cuatro Caminos (Distrito Tetuán. Madrid Capital),5900.0,6.0,4.0,322.0,322.0,250.0,https://www.pisos.com/alquilar/piso-tetuan_cuatro_caminos28046-50905264967_100500/,True
+Piso en calle Castelló,Recoletos (Distrito Barrio de Salamanca. Madrid Capital),5750.0,2.0,3.0,170.0,170.0,165.0,https://www.pisos.com/alquilar/piso-recoletos28001-50894863614_995410/,True
+Ático en Camino Viejo del Cura,Encinar de los Reyes (La Moraleja),6900.0,4.0,5.0,400.0,400.0,250.0,https://www.pisos.com/alquilar/atico-la_moraleja_encinar_de_los_reyes28055-53409042491_100500/,True
+Dúplex en calle de Oquendo,El Viso (Distrito Chamartín. Madrid Capital),11500.0,3.0,5.0,180.0,180.0,160.0,https://www.pisos.com/alquilar/duplex-chamartin_el_viso28006-53425820816_100500/,True
+Ático en calle de Francisco Goya,Nueva España (Distrito Chamartín. Madrid Capital),5900.0,3.0,4.0,270.0,270.0,205.0,https://www.pisos.com/alquilar/atico-nueva_espana28016-52541759574_500039/,True
+Casa pareada en Valdemarín,Valdemarín (Distrito Moncloa-Aravaca. Madrid Capital),6000.0,4.0,3.0,300.0,300.0,,https://www.pisos.com/alquilar/casa_pareada-valdemarin-50037813222_101800/,True
+Chalet en Quintamora,Centro-La Estación-Prado de La Laguna (San Lorenzo de El Escorial),6500.0,4.0,3.0,250.0,250.0,,https://www.pisos.com/alquilar/chalet-centro_la_estacion_prado_de_la_laguna-52596463273_103800/,True
+Piso en calle de San Juan de la Salle,Nueva España (Distrito Chamartín. Madrid Capital),6400.0,4.0,4.0,317.0,317.0,267.0,https://www.pisos.com/alquilar/piso-nueva_espana28036-51728710760_996542/,True
+Ático en calle de Serrano,Recoletos (Distrito Barrio de Salamanca. Madrid Capital),14000.0,5.0,6.0,440.0,440.0,380.0,https://www.pisos.com/alquilar/atico-recoletos28001-48381626639_500039/,True
+Piso en calle del Conde de Aranda,Recoletos (Distrito Salamanca. Madrid Capital),8000.0,3.0,4.0,240.0,240.0,230.0,https://www.pisos.com/alquilar/piso-recoletos28001-945856909415561_109700/,True
+Ático en calle de Génova,Almagro (Distrito Chamberí. Madrid Capital),7000.0,4.0,4.0,300.0,300.0,,https://www.pisos.com/alquilar/atico-chamberi_almagro28010-52542113505_100500/,True
+Ático en calle de Sagasta,Justicia-Chueca (Distrito Centro. Madrid Capital),6500.0,2.0,2.0,220.0,220.0,120.0,https://www.pisos.com/alquilar/atico-justicia_chueca28004-25020522818_996542/,True
+Piso en calle de Fomento,Palacio (Distrito Centro. Madrid Capital),6000.0,2.0,2.0,240.0,240.0,225.0,https://www.pisos.com/alquilar/piso-centro_palacio28013-42524879298_996542/,True
+Piso en calle de García de Paredes,Almagro (Distrito Chamberí. Madrid Capital),6500.0,4.0,5.0,430.0,430.0,387.0,https://www.pisos.com/alquilar/piso-chamberi_almagro28010-24254001404_100500/,True
+Piso en calle de José Abascal,Almagro (Distrito Chamberí. Madrid Capital),8800.0,5.0,5.0,366.0,366.0,355.0,https://www.pisos.com/alquilar/piso-chamberi_almagro28010-28371979661_996542/,True
+Casa unifamiliar en Monte Alina-La Cabaña,Monte Alina-La Cabaña (Pozuelo de Alarcón),6000.0,5.0,5.0,550.0,550.0,500.0,https://www.pisos.com/alquilar/casa_unifamiliar-monte_alina_la_cabana-945856908699791_109700/,True
+Piso en calle de Espalter,Jerónimos (Distrito Retiro. Madrid Capital),16000.0,4.0,4.0,410.0,410.0,400.0,https://www.pisos.com/alquilar/piso-jeronimos28014-9250606534_996542/,True
+Chalet pareado en calle del Mistral,Somosaguas-Húmera-Los Ángeles (Pozuelo de Alarcón),6300.0,6.0,6.0,150.0,150.0,149.0,https://www.pisos.com/alquilar/chalet_pareado-somosaguas_humera_los_angeles28224-50864192034_996542/,True
+Chalet unifamiliar en Avenida de Fuentelarreina,Fuentelarreina (Distrito Fuencarral-El Pardo. Madrid Capital),6000.0,5.0,6.0,510.0,510.0,500.0,https://www.pisos.com/alquilar/chalet_unifamiliar-fuentelarreina28035-15094991482_996542/,True
+Dúplex en calle de la Santísima Trinidad,Trafalgar (Distrito Chamberí. Madrid Capital),6445.0,3.0,4.0,170.0,170.0,,https://www.pisos.com/alquilar/duplex-trafalgar28010-42516410313_100500/,True
+Piso en calle de Santa Engracia,Trafalgar (Distrito Chamberí. Madrid Capital),6000.0,3.0,3.0,182.0,182.0,175.0,https://www.pisos.com/alquilar/piso-trafalgar28010-52566267973_996542/,True
+Piso en calle de Campomanes,Palacio (Distrito Centro. Madrid Capital),10000.0,3.0,4.0,205.0,205.0,192.0,https://www.pisos.com/alquilar/piso-centro_palacio28013-51717819667_100500/,True
+Piso en calle de Juan Bravo,Castellana (Distrito Salamanca. Madrid Capital),6500.0,4.0,5.0,334.0,334.0,280.0,https://www.pisos.com/alquilar/piso-salamanca_castellana28006-37558398811_100500/,True
+Piso en calle de Ruiz de Alarcón,Jerónimos (Distrito Retiro. Madrid Capital),12000.0,5.0,5.0,459.0,459.0,445.0,https://www.pisos.com/alquilar/piso-jeronimos28014-27537100387_996542/,True
+Chalet adosado en Próximo A Ics,La Moraleja (La Moraleja),6000.0,5.0,5.0,317.0,317.0,270.0,https://www.pisos.com/alquilar/chalet_adosado-la_moraleja_distrito-38398808043_179400/,True
+Piso en calle de Villanueva,Recoletos (Distrito Salamanca. Madrid Capital),6700.0,3.0,3.0,201.0,201.0,200.0,https://www.pisos.com/alquilar/piso-recoletos28001-42502588572_996542/,True
+Chalet adosado en El Soto de La Moraleja,El Soto de la Moraleja (La Moraleja),6500.0,4.0,5.0,400.0,400.0,400.0,https://www.pisos.com/alquilar/chalet_adosado-el_soto_de_la_moraleja-88421310572_179400/,True
+Ático en calle de Claudio Coello,Castellana (Distrito Salamanca. Madrid Capital),7000.0,2.0,3.0,180.0,180.0,165.0,https://www.pisos.com/alquilar/atico-barrio_de_salamanca_castellana28006-53354329506_996542/,True
+Piso en Almagro,Almagro (Distrito Chamberí. Madrid Capital),8300.0,5.0,4.0,366.0,366.0,350.0,https://www.pisos.com/alquilar/piso-chamberi_almagro28010-945856909495658_109700/,True
+Piso en calle de Claudio Coello,Castellana (Distrito Barrio de Salamanca. Madrid Capital),6000.0,4.0,4.0,214.0,214.0,,https://www.pisos.com/alquilar/piso-barrio_de_salamanca_castellana28006-52519149286_108900/,True
+Piso en calle del Marqués de la Ensenada,Justicia-Chueca (Distrito Centro. Madrid Capital),6850.0,2.0,3.0,206.0,206.0,200.0,https://www.pisos.com/alquilar/piso-justicia_chueca28004-48333945824_100500/,True
+Piso en calle Sevilla,Sol (Distrito Centro. Madrid Capital),12500.0,2.0,2.0,220.0,220.0,200.0,https://www.pisos.com/alquilar/piso-sol_barrio28013-26715176601_996542/,True
+Piso en calle de Villanueva,Justicia-Chueca (Distrito Centro. Madrid Capital),7000.0,2.0,2.0,210.0,210.0,200.0,https://www.pisos.com/alquilar/piso-justicia_chueca28004-12520879287_996542/,True
+Piso en calle San Marcos,Justicia-Chueca (Distrito Centro. Madrid Capital),12900.0,9.0,7.0,543.0,543.0,525.0,https://www.pisos.com/alquilar/piso-justicia_chueca28004-47519949963_996542/,True
+Piso en calle de Gonzalo de Córdoba,Arapiles (Distrito Chamberí. Madrid Capital),5695.0,3.0,3.0,129.0,129.0,,https://www.pisos.com/alquilar/piso-chamberi_arapiles28015-42558676112_100500/,True
+Ático en calle Avenida de Luis García Cereceda,Prado de Somosaguas (Pozuelo de Alarcón),6100.0,3.0,3.0,445.0,445.0,,https://www.pisos.com/alquilar/atico-prado_de_somosaguas-53405504124_101800/,True
+Piso en Paseo del General Martínez Campos,Almagro (Distrito Chamberí. Madrid Capital),7200.0,4.0,4.0,320.0,320.0,,https://www.pisos.com/alquilar/piso-chamberi_almagro28010-53384430844_108900/,True
+Piso en Ibiza,Ibiza (Distrito Retiro. Madrid Capital),7500.0,3.0,2.0,191.0,191.0,,https://www.pisos.com/alquilar/piso-ibiza28009-51670165668_108500/,True
+Piso en Madrid,Castellana (Distrito Salamanca. Madrid Capital),6900.0,4.0,3.0,200.0,200.0,,https://www.pisos.com/alquilar/piso-barrio_de_salamanca_castellana28006-52585001099_100500/,True
+Ático en Paseo de la Castellana,Hispanoamérica (Distrito Chamartín. Madrid Capital),19000.0,5.0,4.0,376.0,376.0,370.0,https://www.pisos.com/alquilar/atico-chamartin_hispanoamerica28046-51667780219_100500/,True
+Piso en calle de Francisco Silvela,Guindalera (Distrito Salamanca. Madrid Capital),6000.0,3.0,4.0,230.0,230.0,,https://www.pisos.com/alquilar/piso-guindalera28028-53426912686_108900/,True
+Piso en calle de Núñez de Balboa,Castellana (Distrito Salamanca. Madrid Capital),7500.0,4.0,5.0,228.0,228.0,199.0,https://www.pisos.com/alquilar/piso-salamanca_castellana28006-32556036229_996542/,True
+Casa en calle del Caballo,Somosaguas-Húmera-Los Ángeles (Pozuelo de Alarcón),13500.0,4.0,5.0,1.17,1.17,,https://www.pisos.com/alquilar/casa-somosaguas_humera_los_angeles28223-38424143795_101800/,True
+Piso en Jerónimos,Jerónimos (Distrito Retiro. Madrid Capital),9500.0,4.0,5.0,322.0,322.0,,https://www.pisos.com/alquilar/piso-jeronimos28014-50882404685_100500/,True
+Piso en Retiro,Goya (Distrito Barrio de Salamanca. Madrid Capital),7500.0,2.0,2.0,220.0,197.0,,https://www.pisos.com/alquilar/piso-goya28009-47532022933_108900/,True
+Ático en calle de Serrano,Castellana (Distrito Barrio de Salamanca. Madrid Capital),10000.0,4.0,5.0,272.0,272.0,,https://www.pisos.com/alquilar/atico-salamanca_castellana28006-51740663097_108900/,True
+Casa en Somosaguas-Húmera-Los Ángeles,Somosaguas-Húmera-Los Ángeles (Pozuelo de Alarcón),13650.0,5.0,7.0,728.0,728.0,,https://www.pisos.com/alquilar/casa-somosaguas_humera_los_angeles28223-52540567328_101800/,True
+Piso en calle San Marcos,Justicia-Chueca (Distrito Centro. Madrid Capital),12900.0,6.0,5.0,557.0,557.0,,https://www.pisos.com/alquilar/piso-justicia_chueca28004-50848116096_100500/,True
+Casa pareada en La Moraleja,La Moraleja (La Moraleja),6900.0,6.0,5.0,380.0,380.0,307.0,https://www.pisos.com/alquilar/casa_pareada-la_moraleja_distrito28109-53349446716_100500/,True
+Casa en Valdecabañas,Valdecabañas (Boadilla del Monte),5800.0,5.0,6.0,700.0,700.0,,https://www.pisos.com/alquilar/casa-boadilla_del_monte_valdecabanas-52577904839_108500/,True
+Apartamento en calle de Juan Bravo,Lista (Distrito Salamanca. Madrid Capital),6000.0,4.0,5.0,241.0,241.0,,https://www.pisos.com/alquilar/apartamento-lista_barrio28006-50884565192_101800/,True
+Chalet en Viñas Viejas,Viñas Viejas (Boadilla del Monte),8500.0,5.0,6.0,522.0,522.0,,https://www.pisos.com/alquilar/chalet-vinas_viejas-52538765093_108500/,True
+Ático en calle de Ayala,Recoletos (Distrito Salamanca. Madrid Capital),9000.0,5.0,5.0,306.0,306.0,,https://www.pisos.com/alquilar/atico-recoletos28001-51708843229_108900/,True
+Apartamento en calle de Núñez de Balboa,Castellana (Distrito Barrio de Salamanca. Madrid Capital),10500.0,5.0,5.0,425.0,425.0,,https://www.pisos.com/alquilar/apartamento-barrio_de_salamanca_castellana28006-52588343185_101800/,True
+Casa en Somosaguas-Húmera-Los Ángeles,Somosaguas-Húmera-Los Ángeles (Pozuelo de Alarcón),7000.0,6.0,5.0,610.0,610.0,,https://www.pisos.com/alquilar/casa-somosaguas_humera_los_angeles28223-45096909389_101800/,True
+Apartamento en calle de Salustiano Olozaga,Recoletos (Distrito Barrio de Salamanca. Madrid Capital),7800.0,5.0,5.0,206.0,206.0,,https://www.pisos.com/alquilar/apartamento-recoletos28001-52557643098_101800/,True
+Apartamento en calle de Génova,Justicia-Chueca (Distrito Centro. Madrid Capital),6750.0,3.0,3.0,187.0,187.0,,https://www.pisos.com/alquilar/apartamento-justicia_chueca28004-38429880369_101800/,True
+Ático en Golf-El Carralero,Golf-El Carralero (Majadahonda),6750.0,4.0,3.0,192.0,192.0,,https://www.pisos.com/alquilar/atico-golf_el_carralero28220-50849882056_101800/,True
+Casa adosada en calle de Romero Girón,Hispanoamérica (Distrito Chamartín. Madrid Capital),6900.0,6.0,6.0,570.0,570.0,540.0,https://www.pisos.com/alquilar/casa_adosada-chamartin_hispanoamerica28036-19220092216_517093/,True
+Piso en Distrito Salamanca,Recoletos (Distrito Salamanca. Madrid Capital),10000.0,3.0,4.0,235.0,235.0,,https://www.pisos.com/alquilar/piso-recoletos28001-49246819768_108900/,True
+Apartamento en calle de Luis Martínez Feduchi,Encinar de los Reyes (La Moraleja),7000.0,3.0,3.0,260.0,260.0,,https://www.pisos.com/alquilar/apartamento-la_moraleja_encinar_de_los_reyes28055-53421635395_101800/,True
+Apartamento en Justicia-Chueca,Justicia-Chueca (Distrito Centro. Madrid Capital),6500.0,4.0,4.0,191.0,191.0,,https://www.pisos.com/alquilar/apartamento-justicia_chueca28004-50910708706_101800/,True
+Apartamento en calle de Villanueva,Recoletos (Distrito Barrio de Salamanca. Madrid Capital),7800.0,2.0,3.0,200.0,200.0,,https://www.pisos.com/alquilar/apartamento-recoletos28001-51752498920_101800/,True
+Apartamento en Justicia-Chueca,Justicia-Chueca (Distrito Centro. Madrid Capital),6500.0,3.0,3.0,191.0,,,https://www.pisos.com/alquilar/apartamento-justicia_chueca28004-45888580404_101800/,True
+Apartamento en Castellana,Castellana (Distrito Salamanca. Madrid Capital),6000.0,4.0,3.0,240.0,240.0,,https://www.pisos.com/alquilar/apartamento-salamanca_castellana28006-45883935476_101800/,True
+Apartamento en Castellana,Castellana (Distrito Barrio de Salamanca. Madrid Capital),5900.0,2.0,2.0,139.0,139.0,,https://www.pisos.com/alquilar/apartamento-barrio_de_salamanca_castellana28001-52535395064_101800/,True
+Chalet en Valdecabañas,Valdecabañas (Boadilla del Monte),7500.0,4.0,3.0,635.0,635.0,,https://www.pisos.com/alquilar/chalet-boadilla_del_monte_valdecabanas-52524287071_108500/,True
+Piso en Castellana,Castellana (Distrito Salamanca. Madrid Capital),11000.0,5.0,5.0,392.0,392.0,,https://www.pisos.com/alquilar/piso-salamanca_castellana28001-38372267674_101800/,True
+Apartamento en calle de Alfonso XII,Jerónimos (Distrito Retiro. Madrid Capital),13500.0,5.0,5.0,411.0,411.0,,https://www.pisos.com/alquilar/apartamento-jeronimos28014-42548141697_101800/,True
+Apartamento en Paseo del Pintor Rosales,Argüelles (Distrito Moncloa-Aravaca. Madrid Capital),13995.0,6.0,5.0,360.0,360.0,,https://www.pisos.com/alquilar/apartamento-moncloa_aravaca_arguelles28008-50090878601_101800/,True
+Ático en Castellana,Castellana (Distrito Barrio de Salamanca. Madrid Capital),5900.0,2.0,2.0,121.0,121.0,,https://www.pisos.com/alquilar/atico-barrio_de_salamanca_castellana28001-52511269759_101800/,True
+Apartamento en El Viso,El Viso (Distrito Chamartín. Madrid Capital),6800.0,5.0,6.0,256.0,256.0,,https://www.pisos.com/alquilar/apartamento-chamartin_el_viso28002-52522972244_101800/,True
+Casa en La Moraleja,La Moraleja (La Moraleja),9000.0,5.0,4.0,600.0,600.0,,https://www.pisos.com/alquilar/casa-la_moraleja_distrito28109-44224183893_101800/,True
+Piso en Recoletos,Recoletos (Distrito Barrio de Salamanca. Madrid Capital),6900.0,3.0,4.0,294.0,294.0,,https://www.pisos.com/alquilar/piso-recoletos28001-39201528358_101800/,True
+Casa en Valdecabañas,Valdecabañas (Boadilla del Monte),5800.0,6.0,8.0,625.0,625.0,,https://www.pisos.com/alquilar/casa-boadilla_del_monte_valdecabanas-50835170573_101800/,True
+Chalet en Ciudalcampo-Fuente del Fresno,Ciudalcampo-Fuente del Fresno (San Sebastián de los Reyes),9500.0,5.0,6.0,650.0,650.0,,https://www.pisos.com/alquilar/chalet-ciudalcampo_fuente_del_fresno28707-51751518282_108500/,True
+Casa en Encinar de los Reyes,Encinar de los Reyes (La Moraleja),7500.0,5.0,6.0,350.0,350.0,,https://www.pisos.com/alquilar/casa-la_moraleja_encinar_de_los_reyes28055-50042461268_101800/,True
+Piso en Nueva España,Nueva España (Distrito Chamartín. Madrid Capital),7000.0,4.0,4.0,335.0,335.0,,https://www.pisos.com/alquilar/piso-nueva_espana28016-38409180214_101800/,True
+Ático en calle de Génova,Justicia-Chueca (Distrito Centro. Madrid Capital),6750.0,3.0,3.0,191.0,191.0,,https://www.pisos.com/alquilar/atico-justicia_chueca28004-38384716743_101800/,True
+Apartamento en calle del Factor,Palacio (Distrito Centro. Madrid Capital),6500.0,5.0,6.0,492.0,492.0,,https://www.pisos.com/alquilar/apartamento-centro_palacio28013-50091476172_101800/,True
+Apartamento en Recoletos,Recoletos (Distrito Barrio de Salamanca. Madrid Capital),5800.0,4.0,3.0,160.0,160.0,,https://www.pisos.com/alquilar/apartamento-recoletos28001-53333542359_101800/,True
+Apartamento en calle de Alberto Bosch,Jerónimos (Distrito Retiro. Madrid Capital),14160.0,3.0,5.0,336.0,336.0,,https://www.pisos.com/alquilar/apartamento-jeronimos28014-38355275146_101800/,True
+Apartamento en calle de Villanueva,Recoletos (Distrito Salamanca. Madrid Capital),6500.0,3.0,3.0,200.0,200.0,,https://www.pisos.com/alquilar/apartamento-recoletos28001-50033671677_101800/,True
+Casa en Zona Carretera del Plantío,Zona Carretera del Plantío (Majadahonda),16000.0,10.0,10.0,1.0,1.0,,https://www.pisos.com/alquilar/casa-zona_carretera_del_plantio28221-52512578627_101800/,True
+Casa en Centro,Centro (Las Rozas de Madrid),6000.0,6.0,6.0,495.0,495.0,,https://www.pisos.com/alquilar/casa-las_rozas_de_madrid_centro28232-50878373596_101800/,True
+Chalet en La Finca,Somosaguas-Húmera-Los Ángeles (Pozuelo de Alarcón),14000.0,5.0,6.0,750.0,750.0,,https://www.pisos.com/alquilar/chalet-somosaguas_humera_los_angeles28223-51710901009_102100/,True
+Ático en Castellana,Castellana (Distrito Barrio de Salamanca. Madrid Capital),16000.0,4.0,5.0,280.0,280.0,,https://www.pisos.com/alquilar/atico-salamanca_castellana28046-43371934175_101800/,True
+Apartamento en Almagro,Almagro (Distrito Chamberí. Madrid Capital),10500.0,4.0,4.0,258.0,258.0,,https://www.pisos.com/alquilar/apartamento-chamberi_almagro28010-53348433543_101800/,True
+Apartamento en El Viso,El Viso (Distrito Chamartín. Madrid Capital),6000.0,4.0,3.0,220.0,,,https://www.pisos.com/alquilar/apartamento-chamartin_el_viso28006-52501115830_101800/,True
+Chalet en Valdepastores-Pino Centinela-Las Encinas,Valdepastores-Pino Centinela-Las Encinas (Boadilla del Monte),5700.0,4.0,5.0,450.0,450.0,,https://www.pisos.com/alquilar/chalet-valdepastores_pino_centinela_las_encinas28669-52568807219_108500/,True
+Casa adosada en Colina,Colina (Distrito Ciudad Lineal. Madrid Capital),7000.0,4.0,3.0,482.0,482.0,,https://www.pisos.com/alquilar/casa_adosada-ciudad_lineal_colina28043-40025002470_101800/,True
+Casa en Valdebebas-Valdefuentes,Valdebebas-Valdefuentes (Distrito Hortaleza. Madrid Capital),6500.0,3.0,2.0,244.0,244.0,,https://www.pisos.com/alquilar/casa-valdebebas_valdefuentes28055-51743790630_101800/,True
+Casa en Ciudalcampo-Fuente del Fresno,Ciudalcampo-Fuente del Fresno (San Sebastián de los Reyes),10000.0,5.0,4.0,650.0,650.0,,https://www.pisos.com/alquilar/casa-ciudalcampo_fuente_del_fresno28707-48343774799_101800/,True
+Casa en Encinar de los Reyes,Encinar de los Reyes (La Moraleja),5800.0,6.0,6.0,500.0,500.0,,https://www.pisos.com/alquilar/casa-la_moraleja_encinar_de_los_reyes28055-47504999444_101800/,True
+Piso en Salamanca,Palacio (Distrito Centro. Madrid Capital),7000.0,4.0,3.0,160.0,160.0,,https://www.pisos.com/alquilar/piso-centro_palacio28005-52529680460_102100/,True
+Piso en Salamanca,Palacio (Distrito Centro. Madrid Capital),6000.0,4.0,3.0,195.0,195.0,,https://www.pisos.com/alquilar/piso-centro_palacio28005-52561582155_102100/,True
+Piso en Salamanca,Palacio (Distrito Centro. Madrid Capital),9000.0,5.0,4.0,240.0,240.0,,https://www.pisos.com/alquilar/piso-centro_palacio28005-52512678860_102100/,True
+Chalet en Ciudalcampo,Casco Antiguo (San Sebastián de los Reyes),6000.0,5.0,4.0,450.0,450.0,,https://www.pisos.com/alquilar/chalet-san_sebastian_de_los_reyes_casco_antiguo28701-37585903758_102100/,True
+Chalet en Conde Orgaz,Prosperidad (Distrito Chamartín. Madrid Capital),14000.0,6.0,5.0,600.0,600.0,,https://www.pisos.com/alquilar/chalet-chamartin_prosperidad28043-53337597870_102100/,True
+Piso en Salamanca,Goya (Distrito Barrio de Salamanca. Madrid Capital),10000.0,4.0,4.0,333.0,333.0,,https://www.pisos.com/alquilar/piso-goya28006-52531843093_102100/,True
+Chalet en El Viso,El Viso (Distrito Chamartín. Madrid Capital),8500.0,5.0,5.0,345.0,345.0,337.0,https://www.pisos.com/alquilar/chalet-chamartin_el_viso28002-53362555914_100500/,True
+Piso en Salamanca,Palacio (Distrito Centro. Madrid Capital),6000.0,2.0,2.0,160.0,160.0,,https://www.pisos.com/alquilar/piso-centro_palacio28005-53428859854_102100/,True
+Piso en Salamanca,Justicia-Chueca (Distrito Centro. Madrid Capital),6500.0,3.0,3.0,220.0,220.0,,https://www.pisos.com/alquilar/piso-justicia_chueca28001-51700842461_102100/,True
+Chalet en Alcobendas,Las Tablas (Distrito Fuencarral-El Pardo. Madrid Capital),5800.0,7.0,6.0,550.0,550.0,,https://www.pisos.com/alquilar/chalet-fuencarral_el_pardo_las_tablas28055-47516104208_102100/,True
+Chalet en Fuente del Fresno,Dehesa Vieja-Puente Cultural (San Sebastián de los Reyes),10000.0,4.0,5.0,500.0,500.0,,https://www.pisos.com/alquilar/chalet-dehesa_vieja_puente_cultural28708-51737947233_102100/,True
+Chalet en Conde Orgaz,Prosperidad (Distrito Chamartín. Madrid Capital),9000.0,7.0,6.0,1.0,1.0,,https://www.pisos.com/alquilar/chalet-chamartin_prosperidad28043-15091421027_102100/,True
+Piso en Palacio,Palacio (Distrito Centro. Madrid Capital),6500.0,5.0,2.0,283.0,283.0,,https://www.pisos.com/alquilar/piso-centro_palacio28013-47576038939_102100/,True
+Chalet en Mirasierra,Castilla (Distrito Chamartín. Madrid Capital),12500.0,7.0,7.0,430.0,430.0,,https://www.pisos.com/alquilar/chalet-castilla28034-52573738263_102100/,True
+Chalet en Fuente del Fresno,Dehesa Vieja-Puente Cultural (San Sebastián de los Reyes),8500.0,6.0,6.0,475.0,475.0,,https://www.pisos.com/alquilar/chalet-dehesa_vieja_puente_cultural28708-45017458853_102100/,True
+Chalet en Ciudalcampo,Ciudalcampo-Fuente del Fresno (San Sebastián de los Reyes),6000.0,7.0,8.0,934.0,934.0,,https://www.pisos.com/alquilar/chalet-ciudalcampo_fuente_del_fresno28707-46669498608_102100/,True
+Chalet en Ciudalcampo,Ciudalcampo-Fuente del Fresno (San Sebastián de los Reyes),10000.0,4.0,4.0,1.0,1.0,,https://www.pisos.com/alquilar/chalet-ciudalcampo_fuente_del_fresno28707-51719172714_102100/,True
