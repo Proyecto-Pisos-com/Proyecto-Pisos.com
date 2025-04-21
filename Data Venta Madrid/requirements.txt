@@ -1,0 +1,16 @@
+streamlit
+pandas
+matplotlib
+folium
+python-decouple
+folium
+streamlit-folium
+geopandas
+plotly
+statsmodels
+
+
+
+
+
+
