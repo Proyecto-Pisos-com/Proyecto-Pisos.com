@@ -1,0 +1,1 @@
+SELECT * FROM anuncios LIMIT 2800;
