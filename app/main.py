@@ -10,6 +10,8 @@ from app.landing_page import show_landing_page
 from app.data_page import show_data_page
 from app.detail_page import show_detail_page
 from app.tabla_detallada import show_tabla_detallada_page
+from app.calculadora_compra import show_calculadora_compra
+
 
 from alquiler.dispersion import show_dispersion
 from alquiler.coropletico import show_coropletico
@@ -47,8 +49,6 @@ st.session_state.modo = "alquiler" if modo == "Alquiler" else "venta"
 if st.session_state.modo == "alquiler":
     pagina = st.sidebar.radio("Navegación - Alquiler:", [
         "Landing Page",
-        "Datos",
-        "Detalle",
         "Tabla Detallada",
         "Dispersion",
         "Coroplético",
@@ -63,6 +63,7 @@ else:
         "Landing Page",
         "Archivos Gráficas",
         "Gráficos Interactivos Venta",
+        "Calculadora Compra",
         "Gráfico Dispersión Venta",
         "Distribución Precios Venta",
         "Comparador Pisos Venta",
@@ -73,11 +74,8 @@ else:
 if pagina == "Landing Page":
     show_landing_page()
 
-elif pagina == "Datos":
-    show_data_page()
-
-elif pagina == "Detalle":
-    show_detail_page()
+elif pagina == "Calculadora Compra":
+    show_calculadora_compra()
 
 elif pagina == "Tabla Detallada":
     show_tabla_detallada_page()
