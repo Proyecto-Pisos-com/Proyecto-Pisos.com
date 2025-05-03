@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-regresion_alquiler.py
-
-Script de regresión para predecir rentas de alquiler.
-Creado por Carla, estudiante de Data Science.
-"""
-
 import os
 from pathlib import Path
 
