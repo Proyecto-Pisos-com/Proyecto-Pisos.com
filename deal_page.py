@@ -1,90 +1,119 @@
 # App_Pisos/app/deal_page.py
 
+import streamlit as st
+import pandas as pd
 import joblib
 from pathlib import Path
+import folium
+from streamlit_folium import st_folium
 
-import pandas as pd
-import streamlit as st
+@st.cache_data
+def cargar_datos():
+    csv_path = Path(__file__).resolve().parents[2] / "App_Pisos" / "app" / "data" / "alquiler.csv"
+    df = pd.read_csv(csv_path)
+    df = df.dropna(subset=["precio", "habitaciones", "baños", "superficie_construida", "lat", "lon", "distrito"])
+    df = df[df.precio.between(200, 10000)]
+    df["precio_m2"] = df.precio / df.superficie_construida
+    return df
+
+@st.cache_resource
+def cargar_modelos():
+    models_path = Path(__file__).resolve().parents[2] / "models"
+    scaler = joblib.load(models_path / "scaler_alquiler.pkl")
+    clf    = joblib.load(models_path / "clf_deal.pkl")
+    le     = joblib.load(models_path / "le_deal.pkl")
+    kmeans = joblib.load(models_path / "kmeans_alquiler.pkl")
+    reg    = joblib.load(models_path / "modelo_lgbm_alquiler.pkl")
+    return scaler, clf, le, kmeans, reg
 
 def show_deal_detector():
-    st.title("🔍 Detector de ofertas (Chollo / Justo / Sobreprecio)")
+    """
+    Página Streamlit para explorar ofertas:
+    - Filtros por distrito, precio y superficie
+    - Clasificación (Chollo/Justo/Sobreprecio)
+    - Tabla HTML con enlaces
+    - Mapa interactivo con folium
+    - Explicación del método
+    """
+    st.title("🔎 Explorador de Ofertas de Alquiler")
+    st.markdown("Filtra y visualiza inmuebles clasificados como chollo, justo o sobreprecio.")
 
-    # ——— Rutas ———
-    ROOT       = Path(__file__).resolve().parents[2]
-    MODELS_DIR = ROOT / "models"
-    DATA_CSV   = ROOT / "App_Pisos" / "app" / "data" / "alquiler.csv"
+    df = cargar_datos()
+    scaler, clf, le, kmeans, reg = cargar_modelos()
 
-    # ——— Comprobar artefactos ———
-    necesarios = {
-        "KMeans":        MODELS_DIR / "kmeans_alquiler.pkl",
-        "Scaler":        MODELS_DIR / "scaler_alquiler.pkl",
-        "Regresión":     MODELS_DIR / "modelo_lgbm_alquiler.pkl",
-        "Classifier":    MODELS_DIR / "clf_deal.pkl",
-        "LabelEncoder":  MODELS_DIR / "le_deal.pkl",
-    }
-    faltantes = [nombre for nombre, p in necesarios.items() if not p.exists()]
-    if faltantes:
-        st.error("Faltan modelos en models/: " + ", ".join(faltantes))
+    # — Filtros de usuario —
+    distritos = ["Todos"] + sorted(df["distrito"].unique())
+    distrito  = st.selectbox("📍 Selecciona distrito:", distritos)
+    precio_max = st.slider("💰 Precio máximo (€):", 200, 5000, 1500, step=50)
+    min_m2     = st.slider("📐 Superficie mínima (m²):", 20, 200, 50, step=5)
+
+    df_filt = df.copy()
+    if distrito != "Todos":
+        df_filt = df_filt[df_filt.distrito == distrito]
+    df_filt = df_filt[(df_filt.precio <= precio_max) & (df_filt.superficie_construida >= min_m2)]
+
+    if df_filt.empty:
+        st.warning("No hay propiedades que coincidan con los filtros seleccionados.")
         return
 
-    # ——— Cargar artefactos ———
-    km     = joblib.load(necesarios["KMeans"])
-    scaler = joblib.load(necesarios["Scaler"])
-    reg    = joblib.load(necesarios["Regresión"])
-    clf    = joblib.load(necesarios["Classifier"])
-    le     = joblib.load(necesarios["LabelEncoder"])
+    # — Clasificación —
+    df_filt["cluster"] = kmeans.predict(df_filt[["lat", "lon"]])
+    feats        = df_filt[["habitaciones", "baños", "superficie_construida", "precio_m2", "lat", "lon", "cluster"]]
+    feats_scaled = scaler.transform(feats)
+    codes        = clf.predict(feats_scaled)
+    labels       = le.inverse_transform(codes)
+    df_filt["clasificación"] = labels
 
-    # ——— Cargar CSV de alquileres ———
-    df = pd.read_csv(DATA_CSV)
-    df = df.dropna(subset=["precio","superficie_construida","lat","lon"])
-    df["precio_m2"] = df.precio / df.superficie_construida
-    df["cluster"]   = km.predict(df[["lat","lon"]])
+    # — Preparar tabla —
+    def icono(et): 
+        return "🟢 Chollo" if et=="Chollo" else ("🔴 Sobreprecio" if et=="Sobreprecio" else "⚪ Justo")
 
-    # ——— Entradas del usuario ———
-    st.sidebar.header("Parámetros del inmueble")
-    h   = st.sidebar.number_input("Habitaciones",           1, 0, 1)
-    b   = st.sidebar.number_input("Baños",                  1, 0, 1)
-    m   = st.sidebar.number_input("Superficie (m²)",      50.0, 0.0, 1.0)
-    p   = st.sidebar.number_input("Precio (€)",           500.0, 0.0, 10.0)
-    lat = st.sidebar.number_input("Latitud",         40.416775, format="%.6f")
-    lon = st.sidebar.number_input("Longitud",       -3.703790, format="%.6f")
+    df_tabla = df_filt[[
+        "titulo","precio","superficie_construida","precio_m2","distrito","clasificación","url"
+    ]].copy()
+    df_tabla["clasificación"] = df_tabla["clasificación"].map(icono)
+    df_tabla = df_tabla.sort_values("precio")
+    df_tabla["inmueble"] = df_tabla["url"].apply(lambda u: f'<a href="{u}" target="_blank">ver</a>')
+    df_tabla = df_tabla.rename(columns={
+        "titulo":"Título",
+        "precio":"Precio (€)",
+        "superficie_construida":"Superficie (m²)",
+        "precio_m2":"€/m²",
+        "distrito":"Distrito",
+        "clasificación":"Clasificación"
+    })[["Título","Precio (€)","Superficie (m²)","€/m²","Distrito","Clasificación","inmueble"]]
 
-    if st.sidebar.button("Clasificar"):
-        # — Feature engineering para este punto —
-        precio_m2 = p / m if m else 0.0
-        cluster_n = int(km.predict([[lat, lon]])[0])
-        feats     = [[h, b, m, precio_m2, lat, lon, cluster_n]]
-        Xs        = scaler.transform(feats)
+    st.markdown("### 📋 Resultados clasificados")
+    st.markdown(df_tabla.to_html(escape=False, index=False), unsafe_allow_html=True)
 
-        # — Predicción y etiqueta —
-        label_code    = clf.predict(Xs)[0]
-        label         = le.inverse_transform([label_code])[0]
-        precio_pred   = reg.predict(Xs)[0]
-        dev_rel       = (p - precio_pred) / precio_pred
+    # — Mapa interactivo —
+    st.markdown("### 🗺️ Mapa interactivo de resultados")
+    center = [df_filt.lat.mean(), df_filt.lon.mean()]
+    m = folium.Map(location=center, zoom_start=13)
+    colores = {"Chollo":"green","Justo":"blue","Sobreprecio":"red"}
 
-        # — Mostrar resultado y explicación —
-        st.markdown(f"## Resultado: **{label}**")
-        st.markdown(f"- **Precio predicho:** €{precio_pred:,.0f}")
-        st.markdown(f"- **Desviación:** {dev_rel*100:+.2f}% respecto al valor esperado")
+    for _, r in df_filt.iterrows():
+        folium.Marker(
+            [r.lat, r.lon],
+            popup=(
+                f"<b>{r.titulo}</b><br>"
+                f"Precio: {r.precio} €<br>"
+                f"{icono(r['clasificación'])}<br>"
+                f"<a href='{r.url}' target='_blank'>ver inmueble</a>"
+            ),
+            icon=folium.Icon(color=colores.get(r["clasificación"].split()[0], "gray"))
+        ).add_to(m)
 
-        # — Contexto geográfico: muestra los 50 chollos más cercanos —
-        df["dev_rel"] = (df["precio"] - reg.predict(scaler.transform(
-            df[["habitaciones","baños","superficie_construida","precio_m2","lat","lon","cluster"]]
-        ))) / reg.predict(scaler.transform(
-            df[["habitaciones","baños","superficie_construida","precio_m2","lat","lon","cluster"]]
-        ))
-        # Filtrar solo “Chollos”
-        chollos = df[df["dev_rel"] < -0.10].copy()
-        # Calcular distancia aproximada (euclidiana) y ordenar
-        chollos["dist"] = ((chollos.lat - lat)**2 + (chollos.lon - lon)**2)**0.5
-        cercanos = chollos.nsmallest(50, "dist")
+    st_folium(m, width="100%", height=600)
 
-        st.markdown("### Mapa: 50 chollos más cercanos")
-        st.map(cercanos[["lat","lon"]])
-
-        st.markdown("### Tabla de chollos cercanos")
-        st.dataframe(
-            cercanos[["titulo","ubicacion","precio","precio_m2","dev_rel"]]
-            .assign(dev_rel=lambda d: (d.dev_rel*100).round(2).astype(str) + "%")
-            .rename(columns={"titulo":"Título","ubicacion":"Ubicación","precio":"Precio (€)","precio_m2":"€/m²","dev_rel":"Desviación"})
-        )
+    # — Explicación final —
+    st.markdown("---")
+    st.markdown("""
+    **ℹ️ Cómo funciona**  
+    - El modelo predice un precio esperado y calcula la desviación.  
+    - Clasifica en:
+      - 🟢 Chollo: muy por debajo del precio estimado.  
+      - ⚪ Justo: precio cercano al estimado.  
+      - 🔴 Sobreprecio: por encima del estimado.  
+    - El mapa es interactivo: haz zoom y arrástralo para explorar.
+    """)
