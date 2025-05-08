@@ -4,12 +4,13 @@ import pandas as pd
 import streamlit as st
 from streamlit_folium import folium_static
 from utils import cargar_datos
+from config import VENTAS_CSV  # ✅ Usamos la ruta centralizada
 
 def show_mapa_coropletico_barrios():
     # --- Cargar datos ---
     @st.cache_data
     def cargar_filtrados():
-        return cargar_datos("ventas.csv")
+        return cargar_datos(VENTAS_CSV)  # ✅ Ruta desde config
 
     df = cargar_filtrados()
 

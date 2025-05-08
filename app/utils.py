@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from dotenv import load_dotenv
+import streamlit as st
 
 def load_credentials():
     load_dotenv()
@@ -18,3 +19,13 @@ def cargar_datos(nombre_archivo):
         return pd.read_csv(ruta)
     return pd.DataFrame()
 
+
+
+def set_background_color():
+    st.markdown("""
+        <style>
+            html, body, .main, .block-container {
+                background-color: #fef6e4 !important;
+            }
+        </style>
+    """, unsafe_allow_html=True)

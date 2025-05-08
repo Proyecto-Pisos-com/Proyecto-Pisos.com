@@ -1,62 +1,93 @@
 import streamlit as st
 import pandas as pd
 import folium
+from folium.plugins import MarkerCluster
 from streamlit_folium import st_folium
 from utils import cargar_datos
+from config import ALQUILER_CSV 
 
 def show_mapa_interactivo():
-    # --- Cargar datos ---
+    st.title("🗺️ Mapa Precio Promedio por Zona en Alquiler")
+
     @st.cache_data
     def cargar_filtrados():
-        df = cargar_datos("alquiler.csv")
+        df = cargar_datos(ALQUILER_CSV)  
         return df.dropna(subset=["lat", "lon", "ubicacion", "titulo", "precio", "link"])
 
     df = cargar_filtrados()
 
-    st.title("🗺️ Mapa Estilo Google de Inmuebles en Alquiler")
+    tipo_cols = [
+        ("piso", "Piso"),
+        ("casa", "Casa"),
+        ("atico", "Ático"),
+        ("estudio", "Estudio"),
+        ("apartamento", "Apartamento"),
+        ("duplex", "Dúplex"),
+        ("chalet", "Chalet"),
+        ("finca", "Finca"),
+        ("loft", "Loft"),
+    ]
 
-    # --- SIDEBAR: Filtros ---
-    st.sidebar.header("🔍 Filtros de búsqueda")
+    def detectar_tipo(row):
+        for col, nombre in tipo_cols:
+            if col in row and row[col] == 1:
+                return nombre
+        return "Otro"
 
-    # Buscar por zona
-    zonas = sorted(df["ubicacion"].dropna().unique().tolist())
-    busqueda = st.sidebar.text_input("Buscar zona")
-    zonas_filtradas = [z for z in zonas if busqueda.lower() in z.lower()]
+    df["tipo_vivienda"] = df.apply(detectar_tipo, axis=1)
 
-    # Selección de zona
-    zona_seleccionada = st.sidebar.selectbox("Selecciona una zona", options=zonas_filtradas if zonas_filtradas else [""])
+    if {"lat", "lon", "precio", "ubicacion"}.issubset(df.columns):
+        st.subheader("📍 Mapa Precio Promedio por Ubicación")
 
-    # Filtrar por zona
-    df_filtrado = df[df["ubicacion"] == zona_seleccionada] if zona_seleccionada else df.head(0)
+        df['ubicacion'] = df['ubicacion'].str.strip()
+        media_precio = df.groupby('ubicacion')['precio'].mean().reset_index()
+        media_precio.columns = ['Ubicacion', 'Precio Promedio']
 
-    # Filtro de precio con verificación
-    if not df_filtrado.empty:
-        min_precio = int(df_filtrado["precio"].min())
-        max_precio = int(df_filtrado["precio"].max())
+        media_precio = media_precio.merge(
+            df[['ubicacion', 'lat', 'lon', 'habitaciones', 'baños', 'superficie_construida', 'tipo_vivienda']],
+            left_on='Ubicacion', right_on='ubicacion', how='left'
+        )
+        media_precio = media_precio.dropna(subset=['lat', 'lon'])
 
-        if min_precio < max_precio:
-            precio_range = st.sidebar.slider("Rango de precio (€)", min_value=min_precio, max_value=max_precio, value=(min_precio, max_precio))
-            df_filtrado = df_filtrado[(df_filtrado["precio"] >= precio_range[0]) & (df_filtrado["precio"] <= precio_range[1])]
-        else:
-            st.sidebar.info("No hay suficientes valores distintos de precio para aplicar el filtro.")
+        min_precio = media_precio['Precio Promedio'].min()
+        max_precio = media_precio['Precio Promedio'].max()
 
-    # --- MAPA ---
-    if not df_filtrado.empty:
-        m = folium.Map(location=[df_filtrado["lat"].mean(), df_filtrado["lon"].mean()], zoom_start=13)
+        def obtener_color_precio(precio):
+            normalized_price = (precio - min_precio) / (max_precio - min_precio)
+            if normalized_price < 0.33:
+                return 'green'
+            elif normalized_price > 0.66:
+                return 'red'
+            else:
+                return 'orange'
 
-        for _, row in df_filtrado.iterrows():
-            popup = f"""
-            <b>{row['titulo']}</b><br>
-            {int(row['precio'])} €<br>
-            {row['ubicacion']}<br>
-            <a href="{row['link']}" target="_blank">Ver anuncio</a>
-            """
+        mapa_precio = folium.Map(location=[40.4168, -3.7038], zoom_start=12, tiles="CartoDB positron")
+        marker_cluster_precio = MarkerCluster().add_to(mapa_precio)
+
+        for _, row in media_precio.iterrows():
+            tipo = row.get("tipo_vivienda", "Otro")
             folium.Marker(
-                location=[row["lat"], row["lon"]],
-                popup=folium.Popup(popup, max_width=300)
-            ).add_to(m)
+                location=[row['lat'], row['lon']],
+                popup=f"""
+                    <strong>{row['Ubicacion']}</strong><br>
+                    Precio Promedio: {row['Precio Promedio']:.2f} €<br>
+                    Habitaciones: {row['habitaciones']}<br>
+                    Baños: {row['baños']}<br>
+                    Superficie Construida: {row['superficie_construida']} m²<br>
+                    Tipo de Vivienda: {tipo}
+                """,
+                icon=folium.Icon(color=obtener_color_precio(row['Precio Promedio']), icon='info-sign')
+            ).add_to(marker_cluster_precio)
 
-        st_folium(m, width=1000)
-        st.markdown(f"Se muestran **{len(df_filtrado)}** inmuebles en **{zona_seleccionada}**.")
+        # 👉 Mostrar en columnas
+        col_mapa, col_info = st.columns([3, 1])
+        with col_mapa:
+            st_folium(mapa_precio, width="100%", height=600)
+
+        with col_info:
+            st.markdown("### ℹ️ Interpretación del mapa")
+            st.markdown("- 🔴 **Rojo**: zonas con precios **altos**")
+            st.markdown("- 🟠 **Naranja**: zonas con precios **intermedios**")
+            st.markdown("- 🟢 **Verde**: zonas con precios **bajos**")
     else:
-        st.info("No hay inmuebles disponibles con los filtros seleccionados.")
+        st.warning("⚠️ No se encontraron las columnas necesarias para el mapa interactivo.")

@@ -1,36 +1,41 @@
+import sqlite3
+import pandas as pd
 import sys
 import os
 import streamlit as st
 
-# Aseguramos que Python entienda la carpeta raíz para imports
+# Añadir carpeta raíz al path para permitir imports relativos
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-# Importar módulos de páginas
+# --- Importar funciones de páginas ---
 from app.landing_page import show_landing_page
 from app.data_page import show_data_page
 from app.detail_page import show_detail_page
-from app.tabla_detallada import show_tabla_detallada_page
-from app.calculadora_compra import show_calculadora_compra
+from app.utils import set_background_color
 
+from bases_de_datos.app_streamlit_sql import show_sql_explorer
+from Equipo.about_us import show_about_us
 
+from machine_learning.detector_piso import show_deal_detector
+from machine_learning.redes_neuronales import show_redes_neuronales
+from machine_learning.calculadora_compra import show_calculadora_compra
+
+from alquiler.tabla_detallada import show_tabla_detallada_page  
 from alquiler.dispersion import show_dispersion
-from alquiler.coropletico import show_coropletico
-from alquiler.ficha_inmueble import show_ficha_inmueble
+from alquiler.analisis_zona import show_coropletico
 from alquiler.graficos_extra import show_graficos_extra
 from alquiler.graficos_mercado import show_graficos_mercado
 
 from comparador.comparador_alquiler import show_comparador_alquiler
 from comparador.comparador_pisos import show_comparador_pisos
 
-from coordenadas.mapa_coropletico_barrios import show_mapa_coropletico_barrios
 from coordenadas.mapa_interactivo import show_mapa_interactivo
 
-from venta.archivos_graficas import show_archivos_graficas
 from venta.charts_page import show_charts_page
-from venta.grafico_dispersion import show_grafico_dispersion
 from venta.grafico_distribucion_precios import show_grafico_distribucion_precios
 
-# Configuración de la app
+
+# --- Configuración general de la app ---
 st.set_page_config(
     page_title="Pisos.com",
     page_icon="🏠",
@@ -38,87 +43,93 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Selector general de Alquiler o Venta
+set_background_color()
+
+# Estado inicial del modo
 if "modo" not in st.session_state:
-    st.session_state.modo = "alquiler"  # por defecto
+    st.session_state.modo = "alquiler"
 
-modo = st.sidebar.selectbox("📂 Selecciona tipo de análisis:", ["Alquiler", "Venta"])
-st.session_state.modo = "alquiler" if modo == "Alquiler" else "venta"
+# --- Selector principal (ordenado: Venta primero) ---
+modo = st.sidebar.selectbox(
+    "📂 Selecciona tipo de análisis:",
+    ["Venta", "Alquiler", "Base de Datos", "Redes Neuronales", "About Us"],
+    key="modo_selector"
+)
 
-# Navegación lateral
-if st.session_state.modo == "alquiler":
+st.session_state.modo = (
+    "venta" if modo == "Venta"
+    else "alquiler" if modo == "Alquiler"
+    else "base_datos" if modo == "Base de Datos"
+    else "redes_neuronales" if modo == "Redes Neuronales"
+    else "about_us"
+)
+
+# --- Mostrar Base de Datos ---
+if st.session_state.modo == "base_datos":
+    show_sql_explorer()
+
+# --- Menú de navegación: ALQUILER ---
+elif st.session_state.modo == "alquiler":
     pagina = st.sidebar.radio("Navegación - Alquiler:", [
-        "Landing Page",
+        "Inicio",
         "Tabla Detallada",
         "Dispersion",
-        "Coroplético",
-        "Ficha Inmueble",
+        "Análisis por Zona",
         "Gráficos Extra",
         "Gráficos Mercado",
         "Comparador Alquiler",
-        "Mapa Interactivo"
+        "Mapa Interactivo",
+        "Detector de Chollos",
     ])
-else:
+
+    if pagina == "Inicio":
+        show_landing_page()
+    elif pagina == "Tabla Detallada":
+        show_tabla_detallada_page()
+    elif pagina == "Dispersion":
+        show_dispersion()
+    elif pagina == "Análisis por Zona":
+        show_coropletico()
+    elif pagina == "Gráficos Extra":
+        show_graficos_extra()
+    elif pagina == "Gráficos Mercado":
+        show_graficos_mercado()
+    elif pagina == "Comparador Alquiler":
+        show_comparador_alquiler()
+    elif pagina == "Mapa Interactivo":
+        show_mapa_interactivo()
+    elif pagina == "Detector de Chollos":
+        show_deal_detector()
+
+# --- Menú de navegación: VENTA ---
+elif st.session_state.modo == "venta":
     pagina = st.sidebar.radio("Navegación - Venta:", [
-        "Landing Page",
-        "Archivos Gráficas",
-        "Gráficos Interactivos Venta",
-        "Calculadora Compra",
-        "Gráfico Dispersión Venta",
-        "Distribución Precios Venta",
-        "Comparador Pisos Venta",
-        "Mapa Coroplético Barrios"
+        "Inicio",
+        "Analiza tu inmueble",
+        "Calcula tu compra",
+        "Compara tu futuro piso",
+        "Distribución de los precios"
     ])
 
-# Mostrar página según navegación
-if pagina == "Landing Page":
-    show_landing_page()
+    if pagina == "Inicio":
+        show_landing_page()
+    elif pagina == "Analiza tu inmueble":
+        show_charts_page()
+    elif pagina == "Calcula tu compra":
+        show_calculadora_compra()
+    elif pagina == "Compara tu futuro piso":
+        show_comparador_pisos()
+    elif pagina == "Distribución de los precios":
+        show_grafico_distribucion_precios()
 
-elif pagina == "Calculadora Compra":
-    show_calculadora_compra()
+# --- Página: Redes Neuronales ---
+elif st.session_state.modo == "redes_neuronales":
+    show_redes_neuronales()
 
-elif pagina == "Tabla Detallada":
-    show_tabla_detallada_page()
+# --- Página: About Us ---
+elif st.session_state.modo == "about_us":
+    show_about_us()
 
-elif pagina == "Dispersion":
-    show_dispersion()
-
-elif pagina == "Coroplético":
-    show_coropletico()
-
-elif pagina == "Ficha Inmueble":
-    show_ficha_inmueble()
-
-elif pagina == "Gráficos Extra":
-    show_graficos_extra()
-
-elif pagina == "Gráficos Mercado":
-    show_graficos_mercado()
-
-elif pagina == "Comparador Alquiler":
-    show_comparador_alquiler()
-
-elif pagina == "Mapa Interactivo":
-    show_mapa_interactivo()
-
-elif pagina == "Archivos Gráficas":
-    show_archivos_graficas()
-
-elif pagina == "Gráficos Interactivos Venta":
-    show_charts_page()
-
-elif pagina == "Gráfico Dispersión Venta":
-    show_grafico_dispersion()
-
-elif pagina == "Distribución Precios Venta":
-    show_grafico_distribucion_precios()
-
-elif pagina == "Comparador Pisos Venta":
-    show_comparador_pisos()
-
-elif pagina == "Mapa Coroplético Barrios":
-    show_mapa_coropletico_barrios()
-
-# Pie de página
+# --- Pie de página ---
 st.sidebar.markdown("---")
 st.sidebar.markdown("📌 Proyecto Pisos.com - Análisis Alquiler y Venta")

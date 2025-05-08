@@ -2,12 +2,13 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from utils import cargar_datos
+from config import ALQUILER_CSV  
 
 def show_graficos_mercado():
     # --- Cargar datos ---
     @st.cache_data
     def cargar_filtrados():
-        df = cargar_datos("alquiler.csv")
+        df = cargar_datos(ALQUILER_CSV)  
         return df.dropna(subset=["precio", "superficie_construida", "ubicacion", "precio_m2"])
 
     df = cargar_filtrados()
@@ -15,7 +16,7 @@ def show_graficos_mercado():
     st.title("📊 Análisis del Mercado Inmobiliario por Zona")
 
     # --- FILTROS EN SIDEBAR ---
-    st.sidebar.header("🔍 Filtros interactivos")
+    st.sidebar.header("🔎 Filtros interactivos")
 
     # Rango de precios
     min_precio = int(df["precio"].min())
@@ -40,35 +41,39 @@ def show_graficos_mercado():
     )
     st.plotly_chart(fig_hist, use_container_width=True)
 
-    # --- DISPERSIÓN PRECIO M2 vs SUPERFICIE ---
+    # --- DISPERSIÓN PRECIO M2 vs SUPERFICIE Y RANKING ---
     st.subheader("Comparativa de Precio por Metro Cuadrado y Zona")
-    fig_disp = px.scatter(
-        df,
-        x="superficie_construida",
-        y="precio_m2",
-        color="ubicacion",
-        hover_data=["titulo", "precio", "habitaciones", "baños", "conservacion"],
-        title="Precio por m² según Superficie y Zona",
-        labels={
-            "superficie_construida": "Superficie Construida (m²)",
-            "precio_m2": "Precio por m² (€)",
-            "ubicacion": "Zona"
-        }
-    )
-    st.plotly_chart(fig_disp, use_container_width=True)
 
-    # --- TABLA DE RANKING POR ZONA ---
-    st.subheader("🏅 Ranking de Zonas por Precio Medio por m²")
+    col1, col2 = st.columns(2)
 
-    ranking = df.groupby("ubicacion")["precio_m2"].agg(["count", "mean", "min", "max"]).round(2)
-    ranking = ranking.rename(columns={
-        "count": "Número de inmuebles",
-        "mean": "Precio medio por m² (€)",
-        "min": "Precio mínimo por m² (€)",
-        "max": "Precio máximo por m² (€)"
-    }).sort_values(by="Precio medio por m² (€)", ascending=False)
+    with col1:
+        fig_disp = px.scatter(
+            df,
+            x="superficie_construida",
+            y="precio_m2",
+            color="ubicacion",
+            hover_data=["titulo", "precio", "habitaciones", "baños", "conservacion"],
+            title="Precio por m² según Superficie y Zona",
+            labels={
+                "superficie_construida": "Superficie Construida (m²)",
+                "precio_m2": "Precio por m² (€)",
+                "ubicacion": "Zona"
+            }
+        )
+        st.plotly_chart(fig_disp, use_container_width=True)
 
-    st.dataframe(ranking, use_container_width=True)
+    with col2:
+        st.subheader("🏅 Ranking de Zonas por Precio Medio por m²")
+
+        ranking = df.groupby("ubicacion")["precio_m2"].agg(["count", "mean", "min", "max"]).round(2)
+        ranking = ranking.rename(columns={
+            "count": "Número de inmuebles",
+            "mean": "Precio medio por m² (€)",
+            "min": "Precio mínimo por m² (€)",
+            "max": "Precio máximo por m² (€)"
+        }).sort_values(by="Precio medio por m² (€)", ascending=False)
+
+        st.dataframe(ranking, use_container_width=True)
 
     # --- NOTA FINAL ---
     st.markdown("""

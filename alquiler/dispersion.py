@@ -2,13 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from utils import cargar_datos
+from config import ALQUILER_CSV  # ✅ Usamos ruta desde config
 
 def show_dispersion():
 
     # --- Cargar datos y detectar tipo de vivienda ---
     @st.cache_data
     def cargar_y_procesar_datos():
-        df = cargar_datos("alquiler.csv")
+        df = cargar_datos(ALQUILER_CSV)  # ✅ Usamos archivo configurado
 
         tipo_cols = [
             ("piso", "Piso"),
@@ -53,24 +54,43 @@ def show_dispersion():
             df = df[df["ubicacion"] == zona_sel]
 
     # Rango de precios
-    if "precio" in df.columns:
-        min_precio = int(df["precio"].min())
-        max_precio = int(df["precio"].max())
-        precio_range = st.sidebar.slider("Rango de precios (€)", min_precio, max_precio, (min_precio, max_precio))
-        df = df[(df["precio"] >= precio_range[0]) & (df["precio"] <= precio_range[1])]
+    if "precio" in df.columns and not df["precio"].dropna().empty:
+        precios = df["precio"].dropna().astype(int)
+        min_precio = precios.min()
+        max_precio = precios.max()
+
+        if min_precio != max_precio:
+            precio_range = st.sidebar.slider(
+                "Rango de precios (€)",
+                min_precio,
+                max_precio,
+                (min_precio, max_precio)
+            )
+            df = df[(df["precio"] >= precio_range[0]) & (df["precio"] <= precio_range[1])]
+        else:
+            st.sidebar.info(f"Todos los inmuebles tienen el mismo precio: {min_precio} €")
+    else:
+        st.sidebar.warning("No hay datos de precio disponibles para aplicar este filtro.")
 
     # Filtro por habitaciones
-    if "habitaciones" in df.columns:
-        min_hab = int(df["habitaciones"].min())
-        max_hab = int(df["habitaciones"].max())
-        hab_sel = st.sidebar.slider("Nº mínimo de habitaciones", min_hab, max_hab, min_hab)
-        df = df[df["habitaciones"] >= hab_sel]
+    if "habitaciones" in df.columns and not df["habitaciones"].dropna().empty:
+        habitaciones = df["habitaciones"].dropna().astype(int)
+        min_hab = habitaciones.min()
+        max_hab = habitaciones.max()
+        if min_hab != max_hab:
+            hab_sel = st.sidebar.slider("Nº mínimo de habitaciones", min_hab, max_hab, min_hab)
+            df = df[df["habitaciones"] >= hab_sel]
+        else:
+            st.sidebar.info(f"Todas las viviendas tienen {min_hab} habitación(es).")
 
     # Filtro por baños
-    if "baños" in df.columns:
+    if "baños" in df.columns and not df["baños"].dropna().empty:
         baños_unicos = sorted(df["baños"].dropna().unique())
-        baños_sel = st.sidebar.multiselect("Nº de baños", baños_unicos, default=baños_unicos)
-        df = df[df["baños"].isin(baños_sel)]
+        if len(baños_unicos) > 1:
+            baños_sel = st.sidebar.multiselect("Nº de baños", baños_unicos, default=baños_unicos)
+            df = df[df["baños"].isin(baños_sel)]
+        else:
+            st.sidebar.info(f"Todas las viviendas tienen {baños_unicos[0]} baño(s).")
 
     # Filtro libre
     st.sidebar.markdown("#### 🔍 Filtro libre por columna")
@@ -110,7 +130,8 @@ def show_dispersion():
     columnas_resumen = ["precio", "superficie_construida"]
     df_resumen = df.groupby("tipo_vivienda")[columnas_resumen].agg(["mean", "min", "max", "std"]).round(2)
     df_resumen.columns = ['_'.join(col) for col in df_resumen.columns]
-    df_resumen = df_resumen.reset_index(drop=True)
+    df_resumen = df_resumen.reset_index()  # ✅ Conservar tipo_vivienda como columna
+
 
     df_resumen = df_resumen.rename(columns={
         'precio_mean': 'alquiler_mensual_media',
@@ -120,7 +141,8 @@ def show_dispersion():
         'superficie_construida_mean': 'superficie_construida_media'
     })
 
-    st.dataframe(df_resumen[[ 
+    st.dataframe(df_resumen[[ "tipo_vivienda",  
+
         "alquiler_mensual_media", "alquiler_mensual_min", "alquiler_mensual_max",
         "alquiler_mensual_desviacion_estandar", "superficie_construida_media"
     ]], use_container_width=True)
