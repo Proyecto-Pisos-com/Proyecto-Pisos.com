@@ -19,6 +19,7 @@ Aplicación desarrollada en Streamlit para analizar, visualizar y predecir preci
     Estudiante y desarrollador de la app.
     GitHub | LinkedIn
 
+
 📁 Organización del Código y Responsabilidad Individual
 ✅ Pablo Iglesias Lareo
 
@@ -46,6 +47,7 @@ Aplicación desarrollada en Streamlit para analizar, visualizar y predecir preci
     - 🗄️ Creación de bases de datos SQLite
     - 📂 Sección "Base de Datos" con consultas SQL
     - 📉 Procesado de consultas rapidas para Streamlit con SQL
+
 
 ✅ Yones Smaha
 - 🤖 Redes Neuronales → TENSORFLOW
