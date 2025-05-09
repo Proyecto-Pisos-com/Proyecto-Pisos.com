@@ -1,0 +1,15 @@
+streamlit
+pandas
+numpy
+scikit-learn
+lightgbm
+matplotlib
+seaborn
+plotly
+folium
+requests
+beautifulsoup4
+selenium
+webdriver-manager
+sqlite3  
+openpyxl
