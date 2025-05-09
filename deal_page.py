@@ -66,7 +66,7 @@ def show_deal_detector():
 
     # — Preparar tabla —
     def icono(et): 
-        return "🟢 Chollo" if et=="Chollo" else ("🔴 Sobreprecio" if et=="Sobreprecio" else "⚪ Justo")
+        return "🟢 Chollo" if et == "Chollo" else ("🔴 Sobreprecio" if et == "Sobreprecio" else "⚪ Justo")
 
     df_tabla = df_filt[[
         "titulo","precio","superficie_construida","precio_m2","distrito","clasificación","url"
@@ -90,18 +90,26 @@ def show_deal_detector():
     st.markdown("### 🗺️ Mapa interactivo de resultados")
     center = [df_filt.lat.mean(), df_filt.lon.mean()]
     m = folium.Map(location=center, zoom_start=13)
-    colores = {"Chollo":"green","Justo":"blue","Sobreprecio":"red"}
+
+    # Mapeo de colores: las claves deben coincidir con los valores de df_filt["clasificación"]
+    colores = {
+        "Chollo": "green",
+        "Justo": "blue",
+        "Sobreprecio": "red"
+    }
 
     for _, r in df_filt.iterrows():
+        label = r["clasificación"]            # "Chollo", "Justo" o "Sobreprecio"
+        color = colores.get(label, "gray")    # azul para "Justo"
         folium.Marker(
-            [r.lat, r.lon],
+            location=[r.lat, r.lon],
             popup=(
                 f"<b>{r.titulo}</b><br>"
                 f"Precio: {r.precio} €<br>"
-                f"{icono(r['clasificación'])}<br>"
+                f"{icono(label)}<br>"
                 f"<a href='{r.url}' target='_blank'>ver inmueble</a>"
             ),
-            icon=folium.Icon(color=colores.get(r["clasificación"].split()[0], "gray"))
+            icon=folium.Icon(color=color)
         ).add_to(m)
 
     st_folium(m, width="100%", height=600)
