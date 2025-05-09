@@ -1,0 +1,23 @@
+
+__pycache__/
+*.py[cod]
+
+
+venv/
+.env
+
+
+*.db
+*.sqlite3
+.DS_Store
+*.log
+
+# Carpetas y archivos a ignorar
+base de datos/
+.DS_Store
+data_preprocessing
+escalado
+mapa_alquiler_folium
+modelo-clasificacion-alquiler
+regresion-alquiler
+train_segmento_precio

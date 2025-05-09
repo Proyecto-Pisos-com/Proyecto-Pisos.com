@@ -1,6 +1,6 @@
 import pandas as pd
 import sqlite3
-from config import ALQUILER_CSV, VENTAS_CSV, DATABASE_ALQUILER, DATABASE_VENTAS  # ✅ Usamos rutas centralizadas
+from config import ALQUILER_CSV, VENTAS_CSV, DATABASE_ALQUILER, DATABASE_VENTAS  
 
 # Columnas esperadas en la tabla
 columnas_esperadas = [

@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from utils import cargar_datos
-from config import ALQUILER_CSV  # ✅ Usamos la ruta desde config
+from config import ALQUILER_CSV  
 
 def show_comparador_alquiler():
     st.title("🕹️ Comparador de Inmuebles de Alquiler")
@@ -10,7 +10,7 @@ def show_comparador_alquiler():
     # --- Cargar datos ---
     @st.cache_data
     def cargar_filtrados():
-        return cargar_datos(ALQUILER_CSV)  # ✅ Ruta centralizada
+        return cargar_datos(ALQUILER_CSV) 
 
     df = cargar_filtrados()
 
