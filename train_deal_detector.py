@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98cce31 (Importar carpeta limpieza-train con historial local)
 from pathlib import Path
 import pandas as pd
 import numpy as np
@@ -26,7 +29,17 @@ def main():
     df["precio_m2"] = df["precio"]/df["superficie_construida"]
 
     # 2) Clustering geográfico
+<<<<<<< HEAD
     df["cluster"] = KMeans(n_clusters=5, random_state=42).fit_predict(df[["lat","lon"]])
+=======
+    # ---------------------------------------
+    # Entrenamos el KMeans con todo el dataset y lo guardamos:
+    km = KMeans(n_clusters=5, random_state=42)
+    df["cluster"] = km.fit_predict(df[["lat","lon"]])
+    joblib.dump(km, models_dir / "kmeans_alquiler.pkl")
+    print(f"KMeans guardado en models/: kmeans_alquiler.pkl")
+    # ---------------------------------------
+>>>>>>> 98cce31 (Importar carpeta limpieza-train con historial local)
 
     # 3) Preparar features y target de regresión
     features = ["habitaciones","baños","superficie_construida","precio_m2","lat","lon","cluster"]

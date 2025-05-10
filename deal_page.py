@@ -124,4 +124,8 @@ def show_deal_detector():
       - ⚪ Justo: precio cercano al estimado.  
       - 🔴 Sobreprecio: por encima del estimado.  
     - El mapa es interactivo: haz zoom y arrástralo para explorar.
+<<<<<<< HEAD
     """)
+=======
+    """)
+>>>>>>> 98cce31 (Importar carpeta limpieza-train con historial local)
