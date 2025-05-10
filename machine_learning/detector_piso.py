@@ -31,7 +31,7 @@ def cargar_modelos():
 def icono(clasificacion):
     return {
         "Chollo": "🟢 Chollo",
-        "Justo": "⚪ Justo",
+        "Justo": "🔵 Justo",
         "Sobreprecio": "🔴 Sobreprecio"
     }.get(clasificacion, "⚪ Justo")
 
@@ -111,6 +111,6 @@ def show_deal_detector():
     - El modelo predice un precio esperado y calcula la desviación.  
     - Clasifica en:
         - 🟢 Chollo: muy por debajo del precio estimado.  
-        - ⚪ Justo: precio cercano al estimado.  
+        - 🔵 Justo: precio cercano al estimado.  
         - 🔴 Sobreprecio: por encima del estimado.
     """)
