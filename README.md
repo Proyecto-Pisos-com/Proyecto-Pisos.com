@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📊 Proyecto Pisos.com - Análisis de Alquiler y Venta en Madrid
 
 Aplicación desarrollada en **Streamlit** para analizar, visualizar y predecir precios de inmuebles en la ciudad de Madrid, utilizando scraping, procesamiento de datos y modelos de *Machine Learning*.
@@ -56,3 +57,6 @@ Aplicación desarrollada en **Streamlit** para analizar, visualizar y predecir p
 - 📐 Diseño general de navegación de la aplicación
 
 ---
+=======
+
+>>>>>>> limpieza-train
