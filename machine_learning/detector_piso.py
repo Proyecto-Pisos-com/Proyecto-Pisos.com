@@ -33,7 +33,7 @@ def icono(clasificacion):
         "Chollo": "🟢 Chollo",
         "Justo": "🔵 Justo",
         "Sobreprecio": "🔴 Sobreprecio"
-    }.get(clasificacion, "⚪ Justo")
+    }.get(clasificacion, "🔵 Justo")
 
 
 def show_deal_detector():
