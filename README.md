@@ -20,7 +20,7 @@ Aplicación desarrollada en **Streamlit** para analizar, visualizar y predecir p
 ### ✅ **Pablo Iglesias Lareo**
 
 - 🔍 *Scraping* de inmuebles (alquiler y venta) → `scraping_unificado/`  
-  Archivos: `alquiler.csv`, `ventas.csv`, `venta_madrid_modelado`, etc.
+  Archivos: `alquiler`, `ventas`, `venta_madrid_modelado`, etc.
 - 🧹 Unificación y limpieza de datos (inicial)
 - 🗺️ Creación de los apartados de análisis de alquiler:  
   Tabla Detallada, Dispersión, Análisis por Zona, Gráficos Extra, Gráficos de Mercado, Comparador Alquiler
