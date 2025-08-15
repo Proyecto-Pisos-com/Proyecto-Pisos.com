@@ -7,3 +7,26 @@ output/
 
 # macOS
 .DS_Store
+
+# Entornos virtuales
+env311/
+env/
+
+# Archivos de configuración y sistema
+.vscode/
+*.log
+*.tmp
+
+# Bases de datos temporales
+*.sqlite3
+
+# HTML generado
+*.html
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Carpetas específicas del proyecto
+output/
+__pycache__/

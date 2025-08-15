@@ -17,6 +17,8 @@ CLF_DEAL = os.path.join(BASE_DIR, "clf_deal.pkl")
 LE_DEAL = os.path.join(BASE_DIR, "le_deal.pkl")
 CLF_SEGMENTO_PRECIO = os.path.join(BASE_DIR, "clf_segmento_precio.pkl")
 SCALER_SEGMENTO_PRECIO = os.path.join(BASE_DIR, "scaler_segmento_precio.pkl")
+MODELO_LGBM_ALQUILER = "data/modelo_lgbm_alquiler.pkl"
+
 
 # Modelos y escaladores (ventas)
 MODELO_LIGHTGBM_VENTAS = os.path.join(BASE_DIR, "modelo_lightgbm_ventas.pkl")

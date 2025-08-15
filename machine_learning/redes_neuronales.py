@@ -24,13 +24,13 @@ def show_redes_neuronales():
 
     @st.cache_resource
     def load_model_and_scaler():
-        model = tf.keras.models.load_model(MODELO_TENSORFLOW)
-        scaler_X = joblib.load(SCALER_TF_X)
-        scaler_y = joblib.load(SCALER_TF_Y)
+        model = tf.keras.models.load_model(r"E:\Proyecto Final Bootcamp - copia\App Pisos.com Presentacion Final\data\modelo_mejorado.keras")
+        scaler_X = joblib.load(r"E:\Proyecto Final Bootcamp - copia\App Pisos.com Presentacion Final\data\scaler_X.pkl")
+        scaler_y = joblib.load(r"E:\Proyecto Final Bootcamp - copia\App Pisos.com Presentacion Final\data\scaler_y.pkl")
         return model, scaler_X, scaler_y
 
     model, scaler_X, scaler_y = load_model_and_scaler()
-    df = pd.read_csv(VENTAS_CSV)
+    df = pd.read_csv(r"E:\Proyecto Final Bootcamp - copia\App Pisos.com Presentacion Final\data\ventas.csv")
 
     label_encoder = LabelEncoder()
     df["tipo_vivienda_encoded"] = label_encoder.fit_transform(df["tipo_vivienda"])

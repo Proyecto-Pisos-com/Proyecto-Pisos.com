@@ -17,7 +17,7 @@ def show_landing_page():
         with open(path, "rb") as image_file:
             return base64.b64encode(image_file.read()).decode()
 
-    logo_base64 = get_base64_logo("C:/Users/pablo/App_Pisos/data/pisos_logo.png")
+    logo_base64 = get_base64_logo("E:\Proyecto Final Bootcamp - copia\App Pisos.com Presentacion Final\data\pisos_logo.PNG")
 
     st.markdown(f"""
         <div style='text-align: center;'>
@@ -37,7 +37,7 @@ def show_landing_page():
     # 🔍 ¿Qué puedes hacer? — imagen a la izquierda, texto a la derecha
     col1, col2 = st.columns([1, 1.4])
     with col1:
-        st.image("C:/Users/pablo/App_Pisos/data/imagen_para_piso.png", width=390)
+        st.image("E:\Proyecto Final Bootcamp - copia\App Pisos.com Presentacion Final\data\imagen_para_piso.PNG", width=390)
     with col2:
         st.markdown("""
         <h3>🔍 ¿Qué puedes hacer en esta app?</h3>
@@ -55,7 +55,7 @@ def show_landing_page():
     # ✅ Beneficios clave 
     col3, col4 = st.columns([1, 1.4])
     with col3:
-        st.image("C:/Users/pablo/App_Pisos/data/beneficios.png", width=390)
+        st.image(r"E:\Proyecto Final Bootcamp - copia\App Pisos.com Presentacion Final\data\beneficios.PNG", width=390)
     with col4:
         st.markdown("""
         <h3>✅ Beneficios clave</h3>
