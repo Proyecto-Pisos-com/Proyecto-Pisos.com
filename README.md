@@ -49,12 +49,12 @@ Aplicación desarrollada en **Streamlit** para analizar, visualizar y predecir p
 
 ---
 
-### ✅ **Yones Smaha**
+### ✅ **Yones Smaha nhaili**
 
 - 🤖 Desarrollo del módulo de **Redes Neuronales** → `TensorFlow`
 - 💻 Arquitectura modular de la app en `app/`  
   Archivos: `main.py`, `landing_page.py`, `data_page.py`, etc.
-- 📐 Diseño general de navegación de la aplicación
+- 📐 Diseño general de navegación de la aplicación 
 
 ---
 =======
